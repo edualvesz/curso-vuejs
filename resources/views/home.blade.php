@@ -9,21 +9,21 @@
                     Teste de conteúdo
                         <div class="row">
                             <div class="col-md-4">
-                                <painel titulo="Conteudo 1">            
+                                <painel titulo="Conteudo 1" cor="green">            
                                     teste de conteudo
                                 </painel>
                             </div>
                             
                         
                             <div class="col-md-4">
-                                <painel titulo="Conteudo 2">            
+                                <painel titulo="Conteudo 2" cor="green">            
                                     teste de conteudo
                                 </painel>
                             </div>
 
                         
                             <div class="col-md-4">
-                                <painel titulo="Conteudo 3">            
+                                <painel titulo="Conteudo 3" cor="green">            
                                     teste de conteudo
                                 </painel>
                             </div>
