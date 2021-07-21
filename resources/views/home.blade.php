@@ -6,7 +6,7 @@
             Teste de conteúdo
             <div class="row">
                 <div class="col-md-4">
-                    <caixa qtd="80" titulo="Artigos" url="#" cor="orange" icone="ion-ios-book-outline">
+                    <caixa qtd="80" titulo="Artigos" url="teste" cor="orange" icone="ion-ios-book-outline">
                         
                     </caixa>
                 </div>
