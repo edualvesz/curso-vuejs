@@ -1,35 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <painel titulo="Dashboard">
-
-                    Teste de conteúdo
-                        <div class="row">
-                            <div class="col-md-4">
-                                <caixa qtd="80" titulo="Artigos" url="#" cor="orange" icone="ion-ios-book-outline">
-                                    
-                                </caixa>
-                            </div>
-                            
+    <pagina tamanho="10">
+        <painel titulo="Dashboard">
+            Teste de conteúdo
+            <div class="row">
+                <div class="col-md-4">
+                    <caixa qtd="80" titulo="Artigos" url="#" cor="orange" icone="ion-ios-book-outline">
                         
-                            <div class="col-md-4">
-                                <caixa qtd="1500" titulo="Usuários" url="#" cor="blue" icone="ion-person-stalker">
-                                    
-                                </caixa>
-                            </div>
-
+                    </caixa>
+                </div>
+                
+            
+                <div class="col-md-4">
+                    <caixa qtd="1500" titulo="Usuários" url="#" cor="blue" icone="ion-person-stalker">
                         
-                            <div class="col-md-4">
-                                <caixa qtd="3" titulo="Autores" url="#" cor="red" icone="ion-person">
-                                    
-                                </caixa>
-                            </div>
-                        </div>
-                </painel>
+                    </caixa>
+                </div>
+
+            
+                <div class="col-md-4">
+                    <caixa qtd="3" titulo="Autores" url="#" cor="red" icone="ion-person">
+                        
+                    </caixa>
+                </div>
             </div>
-        </div>
-    </div>
+        </painel>
+    </pagina>
 @endsection
