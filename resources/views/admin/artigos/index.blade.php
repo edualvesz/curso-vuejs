@@ -7,7 +7,7 @@
             v-bind:titulos="['#', 'Título', 'Descrição']"
             v-bind:itens="[[1, 'PHP OO', 'Curso de PHP OO'], [2, 'Vue JS', 'Curso de Vue JS']]"
             criar="#criar" detalhe="#detalhe" editar="#editar" deletar="#deletar" token="45678666"
-            teste
+            
             ></tabela-lista>
         </painel>
     </pagina>
