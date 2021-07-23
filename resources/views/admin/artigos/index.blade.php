@@ -3,23 +3,12 @@
 @section('content')
     <pagina tamanho="12">
         <painel titulo="Lista de Artigos">
-            <a href="#">Criar</a>
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>
+            <tabela-lista 
+            v-bind:titulos="['#', 'Título', 'Descrição']"
+            v-bind:itens="[[1, 'PHP OO', 'Curso de PHP OO'], [2, 'Vue JS', 'Curso de Vue JS']]"
+            criar="#criar" detalhe="#detalhe" editar="#editar" deletar="#deletar" token="45678666"
 
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            ></tabela-lista>
         </painel>
     </pagina>
 @endsection
