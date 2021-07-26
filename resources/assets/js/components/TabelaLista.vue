@@ -1,6 +1,11 @@
 <template>
       <div>
-        <a v-if="criar" v-bind:href="criar">Criar</a> <!-- -->
+        <a v-if="criar" v-bind:href="criar">Criar</a> 
+        <div class="form-inline"> <!--campo de busca -->
+          <div class="form-group pull-right">
+            <input type="search" class="form-control" placeholder="Buscar" v-model="buscar">
+          </div>
+        </div>   
         <table class="table table-striped table-hover">
           <thead>
             <tr>
@@ -9,7 +14,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in itens">
+            <tr v-for="(item, index) in lista"> <!--lista foi pega do script computed-->
               <td v-for="i in item">{{i}}</td>
               
               <td v-if="detalhe || editar || deletar">
@@ -40,9 +45,26 @@
 <script>
     export default {
       props:['titulos','itens', 'criar', 'detalhe', 'editar', 'deletar', 'token',],
+      data: function(){
+        return{
+          buscar:''
+        }
+      },
       methods:{
         executaForm: function(index){
           document.getElementById(index).submit()
+        }
+      },
+      computed:{             //aqui é onde sera feita a busca
+        lista:function(){ 
+          return this.itens.filter(res => {
+            for(let i = 0; i < res.length; i++){
+              if ((res[i] + "").toLowerCase().indexOf(this.buscar.toLowerCase()) >= 0) { // esse if é para filtrar todos os campos titulo, descrição e ação
+                return true;
+                }
+              } 
+                return false; 
+            });  
         }
       }
     }
