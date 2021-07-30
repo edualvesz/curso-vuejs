@@ -44,7 +44,7 @@
 </template>
 <script>
     export default {
-      props:['titulos','itens', 'criar', 'detalhe', 'editar', 'deletar', 'token',],
+      props:['titulos','itens', 'ordem', 'ordemCol','criar', 'detalhe', 'editar', 'deletar', 'token',],
       data: function(){
         return{
           buscar:''
@@ -53,10 +53,35 @@
       methods:{
         executaForm: function(index){
           document.getElementById(index).submit()
+        },
+        ordenaColuna: function(coluna){
+          this.ordemCol = 
         }
       },
       computed:{             //aqui é onde sera feita a busca
         lista:function(){ 
+
+          let ordem = this.ordem || "asc";
+          let ordemCol = this.ordemCol || 0;
+          ordem = ordem.toLowerCase();
+          ordemCol = parseInt(ordemCol);
+
+          if(ordem == "asc"){
+            this.itens.sort(function(a,b){     //logica para ordenacao
+            if (a[ordemCol] > b[ordemCol]) {return 1;}
+            if (a[ordemCol] < b[ordemCol]) {return -1;}
+            return 0;
+          });
+          } else {
+            this.itens.sort(function(a,b){     //logica para ordenacao
+            if (a[ordemCol] < b[ordemCol]) {return 1;}
+            if (a[ordemCol] > b[ordemCol]) {return -1;}
+            return 0;
+          });
+          }
+
+          
+
           return this.itens.filter(res => {
             for(let i = 0; i < res.length; i++){
               if ((res[i] + "").toLowerCase().indexOf(this.buscar.toLowerCase()) >= 0) { // esse if é para filtrar todos os campos titulo, descrição e ação
