@@ -9,7 +9,8 @@
         <table class="table table-striped table-hover">
           <thead>
             <tr>
-              <th v-for="titulo in titulos">{{titulo}}</th>
+              <th style="cursor:pointer" v-on:click="ordenaColuna(index)" v-for="(titulo, index) in titulos">{{titulo}}</th> <!--o metodo para inverter clicando no titulo da coluna sera lancado aqui -->
+                                                                                                                             <!--o cursor:pointer vai transformar em maozinha quando o ponteiro do mouse passarpor cima --> 
               <th  v-if="detalhe || editar || deletar">Ação</th>
             </tr>
           </thead>
@@ -44,25 +45,32 @@
 </template>
 <script>
     export default {
-      props:['titulos','itens', 'ordem', 'ordemCol','criar', 'detalhe', 'editar', 'deletar', 'token',],
+      props:['titulos','itens', 'ordem', 'ordemCol', 'criar', 'detalhe', 'editar', 'deletar', 'token',],
       data: function(){
         return{
-          buscar:''
+          buscar:'',
+          ordemAux: this.ordem || "asc",       //correção para a inspeção de elemento não xingar
+          ordemAuxCol: this.ordemCol || 0
         }
       },
       methods:{
         executaForm: function(index){
           document.getElementById(index).submit()
         },
-        ordenaColuna: function(coluna){
-          this.ordemCol = 
+        ordenaColuna: function(coluna){        //metodo para inverter clicando no titulo
+          this.ordemAuxCol = coluna;
+          if(this.ordemAux.toLowerCase() == "asc"){
+            this.ordemAux = 'desc';
+          } else {
+            this.ordemAux = 'asc';
+          }
         }
       },
       computed:{             //aqui é onde sera feita a busca
         lista:function(){ 
 
-          let ordem = this.ordem || "asc";
-          let ordemCol = this.ordemCol || 0;
+          let ordem = this.ordemAux || "asc";
+          let ordemCol = this.ordemAuxCol || 0;
           ordem = ordem.toLowerCase();
           ordemCol = parseInt(ordemCol);
 

@@ -46033,9 +46033,124 @@ module.exports = Component.exports
 
 /***/ }),
 /* 60 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: C:/wamp64/www/curso-vuejs/resources/assets/js/components/TabelaLista.vue: Unexpected token (59:4)\n\n\u001b[0m \u001b[90m 57 | \u001b[39m    ordenaColuna\u001b[33m:\u001b[39m \u001b[36mfunction\u001b[39m(coluna){\n \u001b[90m 58 | \u001b[39m      \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mordemCol \u001b[33m=\u001b[39m \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 | \u001b[39m    }\n \u001b[90m    | \u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 | \u001b[39m  }\u001b[33m,\u001b[39m\n \u001b[90m 61 | \u001b[39m  computed\u001b[33m:\u001b[39m{             \u001b[90m//aqui é onde sera feita a busca\u001b[39m\n \u001b[90m 62 | \u001b[39m    lista\u001b[33m:\u001b[39m\u001b[36mfunction\u001b[39m(){ \u001b[0m\n");
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['titulos', 'itens', 'ordem', 'ordemCol', 'criar', 'detalhe', 'editar', 'deletar', 'token'],
+  data: function data() {
+    return {
+      buscar: '',
+      ordemAux: this.ordem || "asc", //correção para a inspeção de elemento não xingar
+      ordemAuxCol: this.ordemCol || 0
+    };
+  },
+  methods: {
+    executaForm: function executaForm(index) {
+      document.getElementById(index).submit();
+    },
+    ordenaColuna: function ordenaColuna(coluna) {
+      //metodo para inverter clicando no titulo
+      this.ordemAuxCol = coluna;
+      if (this.ordemAux.toLowerCase() == "asc") {
+        this.ordemAux = 'desc';
+      } else {
+        this.ordemAux = 'asc';
+      }
+    }
+  },
+  computed: { //aqui é onde sera feita a busca
+    lista: function lista() {
+      var _this = this;
+
+      var ordem = this.ordemAux || "asc";
+      var ordemCol = this.ordemAuxCol || 0;
+      ordem = ordem.toLowerCase();
+      ordemCol = parseInt(ordemCol);
+
+      if (ordem == "asc") {
+        this.itens.sort(function (a, b) {
+          //logica para ordenacao
+          if (a[ordemCol] > b[ordemCol]) {
+            return 1;
+          }
+          if (a[ordemCol] < b[ordemCol]) {
+            return -1;
+          }
+          return 0;
+        });
+      } else {
+        this.itens.sort(function (a, b) {
+          //logica para ordenacao
+          if (a[ordemCol] < b[ordemCol]) {
+            return 1;
+          }
+          if (a[ordemCol] > b[ordemCol]) {
+            return -1;
+          }
+          return 0;
+        });
+      }
+
+      return this.itens.filter(function (res) {
+        for (var i = 0; i < res.length; i++) {
+          if ((res[i] + "").toLowerCase().indexOf(_this.buscar.toLowerCase()) >= 0) {
+            // esse if é para filtrar todos os campos titulo, descrição e ação
+            return true;
+          }
+        }
+        return false;
+      });
+    }
+  }
+});
 
 /***/ }),
 /* 61 */
@@ -46081,8 +46196,19 @@ var render = function() {
         _c(
           "tr",
           [
-            _vm._l(_vm.titulos, function(titulo) {
-              return _c("th", [_vm._v(_vm._s(titulo))])
+            _vm._l(_vm.titulos, function(titulo, index) {
+              return _c(
+                "th",
+                {
+                  staticStyle: { cursor: "pointer" },
+                  on: {
+                    click: function($event) {
+                      return _vm.ordenaColuna(index)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(titulo))]
+              )
             }),
             _vm._v(" "),
             _vm.detalhe || _vm.editar || _vm.deletar
