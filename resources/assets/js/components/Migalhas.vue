@@ -8,6 +8,9 @@
 
 <script>
     export default {
-       
+       props:['lista'],
+       mounted:function(){
+           console.log(this.lista);
+       }
     }
 </script>

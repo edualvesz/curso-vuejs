@@ -1382,7 +1382,7 @@ function applyToTag (styleElement, obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(62);
+module.exports = __webpack_require__(65);
 
 
 /***/ }),
@@ -1411,7 +1411,7 @@ Vue.component('painel', __webpack_require__(45));
 Vue.component('caixa', __webpack_require__(51));
 Vue.component('pagina', __webpack_require__(56));
 Vue.component('tabela-lista', __webpack_require__(59));
-Vue.component('migalhas', __webpack_require__(72));
+Vue.component('migalhas', __webpack_require__(62));
 
 var app = new Vue({
   el: '#app'
@@ -46344,29 +46344,14 @@ if (false) {
 
 /***/ }),
 /* 62 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(73)
+var __vue_script__ = __webpack_require__(63)
 /* template */
-var __vue_template__ = __webpack_require__(74)
+var __vue_template__ = __webpack_require__(64)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46405,7 +46390,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 73 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46419,10 +46404,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+   props: ['lista'],
+   mounted: function mounted() {
+      console.log(this.lista);
+   }
+});
 
 /***/ }),
-/* 74 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -46464,6 +46454,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-940d2b4a", module.exports)
   }
 }
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
