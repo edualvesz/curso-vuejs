@@ -1,16 +1,23 @@
 <template>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Library</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Data</li>
+        <li v-for="item in lista"><a v-if="item.url" v-bind:class="" v-bind:href="item.url">{{item.titulo}}</a><span v-if="!item.url">{{item.titulo}}</span></li>
     </ol>
 </template>
 
 <script>
     export default {
        props:['lista'],
-       mounted:function(){
-           console.log(this.lista);
+       computed:{
+           defineClass: function(){
+               if(this.url){
+                   return "active";
+               } else {
+                   return "";
+               }
+           }
        }
+       /*mounted:function(){
+           console.log(this.lista);
+       } esse não sera mais usado a partir da aula 24 */      
     }
 </script>
